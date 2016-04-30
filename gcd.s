@@ -1,13 +1,14 @@
-	      .text
-        .globl gcd
-        #PROLOG
+              .text
+              .globl gcd
+	      #PROLOG
 gcd:
-			  push %rbp
-			  mov %rsp, %rbp
-			  push %rbx	
-        #ALGORTHIM
-        #First argument = %rdi
-        #Second argument = %rsi
+	      push %rbp
+	      mov %rsp, %rbp
+	      push %rbx	
+              #ALGORTHIM
+              #First argument = %rdi
+              #Second argument = %rsi
+        
 gcdhelper:    cmp $1, %rdi  # First argument == 1?
               mov $1, %rax  
               je epilog     # First argument == 1 means gcd = 1
@@ -34,7 +35,7 @@ done:         mov %rdi, %rax  #gcd(n,m) = m if m=n
               jmp epilog
 
 epilog:       pop %rbx
-		          mov %rbp, %rsp
-		          pop %rbp
-		          ret
+	      mov %rbp, %rsp
+	      pop %rbp
+              ret
 
