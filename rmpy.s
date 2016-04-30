@@ -16,7 +16,7 @@ rmpy:
 
               mov $0, %r12 
               
-	       mov %r8d, %eax #Store 32bit D1 into %eax
+	      mov %r8d, %eax #Store 32bit D1 into %eax
               imul %r9d      #D2 multiply by %rax
               mov %rax, %r15 #Stores result of imul(rax) into r15
 
@@ -29,7 +29,7 @@ rmpy:
               cmp $0, %r15
               je zero_case_D
 
-	       mov $0, %rdx
+	      mov $0, %rdx
               mov %r14, %rdi #Denominator FINAL for gcd input
               mov %r15, %rsi #Numerator FINAL for gcd input
 
@@ -37,7 +37,7 @@ rmpy:
               call gcd
               add $8, %rsp
 
-		mov %rax, %r10   #r10 holds GCD 
+	      mov %rax, %r10   #r10 holds GCD 
               mov %r14, %rax
               div %r10         #Numerator / GCD
 
@@ -49,17 +49,17 @@ rmpy:
               jmp epilog
 
 zero_case_N:  mov %r12, (%r13)
-	       mov %r15, 4(%r13)
-		je epilog
+	      mov %r15, 4(%r13)
+	      je epilog
 
 zero_case_D:  mov %r14, (%r13)
-		mov %r12, 4(%r13)
-		je epilog
+	      mov %r12, 4(%r13)
+	      je epilog
 		
 epilog: 
               pop %r14
               pop %r15
               mov %rbp, %rsp
               pop %rbp
-      		ret
+      	      ret
               
